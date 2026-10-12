@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unknown Plant</title>
+</head>
+<body>
+    <h2>⚠️ Plant Not Recognised</h2>
+    <p>This image does not appear to match any of the 10 plants in our dataset.</p>
+
+    <img src="{{ image_path }}" alt="Uploaded image" width="300">
+
+    <ul>
+        <li><strong>Confidence:</strong> {{ confidence }}%</li>
+        <li><strong>Uncertainty (entropy):</strong> {{ entropy }}</li>
+        <li><strong>Reason:</strong> {{ reason }}</li>
+    </ul>
+
+    {% if top_guess %}
+    <p><em>Closest match (unreliable): {{ top_guess }}</em></p>
+    {% endif %}
+
+    <p>Please try a clearer image of one of the supported medicinal plants.</p>
+    <a href="/">← Try again</a>
+</body>
+</html>

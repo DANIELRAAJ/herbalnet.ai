@@ -1,0 +1,22 @@
+# Python & Virtual Environments
+venv/
+env/
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# Oversized model files (>100MB exceeds GitHub push limit)
+cnn_model.h5
+nas_model.h5
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary run outputs
+*.log
+temp_result.html

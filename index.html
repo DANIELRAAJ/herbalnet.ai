@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HerbalNet AI • Deep Learning Medicinal Plant Recognition & Botanical Intelligence</title>
+    <meta name="description" content="HerbalNet AI is an advanced deep learning platform for automated identification of 10 rare indigenous medicinal plants using MobileNetV2, Neural Architecture Search (NAS), and entropy-based OOD detection.">
+    <meta name="keywords" content="HerbalNet AI, Medicinal Plant Detection, Deep Learning, MobileNetV2, Ayurveda, Siddha, Daniel Raaj">
+    <meta name="author" content="Daniel Raaj">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <!-- Background Ambient Glows -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+    <div class="ambient-glow glow-3"></div>
+
+    <!-- Navigation Header -->
+    <header class="site-header" id="mainHeader">
+        <div class="header-container">
+            <a href="#" class="brand-logo" id="brandLogo">
+                <div class="logo-icon-wrap">
+                    <i class="fa-solid fa-leaf logo-icon"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">HerbalNet<span class="accent-text">.AI</span></span>
+                    <span class="logo-sub">Botanical Neural Vision</span>
+                </div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#scanner" class="nav-link active"><i class="fa-solid fa-barcode"></i> AI Scanner</a>
+                <a href="#encyclopedia" class="nav-link"><i class="fa-solid fa-book-medical"></i> Plant Database</a>
+                <a href="#architecture" class="nav-link"><i class="fa-solid fa-network-wired"></i> Model Architecture</a>
+                <a href="#research" class="nav-link"><i class="fa-solid fa-chart-line"></i> Metrics</a>
+                <a href="#quickstart" class="nav-link"><i class="fa-solid fa-terminal"></i> Quickstart</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="lang-toggle-btn" id="langToggleBtn" title="Switch English / தமிழ்">
+                    <i class="fa-solid fa-language"></i>
+                    <span id="langLabel">தமிழ்</span>
+                </button>
+                <a href="https://github.com/DANIELRAAJ/herbalnet.ai" target="_blank" rel="noopener noreferrer" class="btn btn-github" id="githubHeaderBtn">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                    <span class="stars-badge"><i class="fa-solid fa-star"></i></span>
+                </a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-badge">
+                <span class="pulse-dot"></span>
+                <span>Deep Learning Plant Identification • MobileNetV2 + NAS</span>
+            </div>
+            <h1 class="hero-title">
+                Intelligent Recognition for <span class="gradient-text">Indigenous Medicinal Flora</span>
+            </h1>
+            <p class="hero-description">
+                HerbalNet AI bridges classical Ayurvedic & Siddha botany with modern computer vision. Powered by a fine-tuned MobileNetV2 backbone, Neural Architecture Search (NAS), and Shannon entropy filtering for reliable clinical botanical classification.
+            </p>
+            
+            <div class="hero-stats-row">
+                <div class="stat-pill">
+                    <i class="fa-solid fa-crosshairs"></i>
+                    <div>
+                        <strong>98.4%</strong>
+                        <span>Test Accuracy</span>
+                    </div>
+                </div>
+                <div class="stat-pill">
+                    <i class="fa-solid fa-seedling"></i>
+                    <div>
+                        <strong>10 Classes</strong>
+                        <span>Rare Herb Species</span>
+                    </div>
+                </div>
+                <div class="stat-pill">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <strong>&lt; 35ms</strong>
+                        <span>Inference Speed</span>
+                    </div>
+                </div>
+                <div class="stat-pill">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <strong>Entropy Filter</strong>
+                        <span>OOD Anomaly Shield</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#scanner" class="btn btn-primary" id="tryScannerBtn">
+                    <i class="fa-solid fa-camera-retro"></i> Launch Live Scanner
+                </a>
+                <a href="#encyclopedia" class="btn btn-secondary">
+                    <i class="fa-solid fa-book-open"></i> Browse 10 Herbs
+                </a>
+                <a href="#quickstart" class="btn btn-outline">
+                    <i class="fa-solid fa-code"></i> Run Flask API
+                </a>
+            </div>
+        </section>
+
+        <!-- Scanner / Interactive AI Demo Section -->
+        <section class="scanner-section" id="scanner">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-brain"></i> Interactive Classifier</span>
+                <h2 class="section-title">Live Medicinal Leaf Scanner</h2>
+                <p class="section-subtitle">Test the model with high-resolution botanical specimens or upload your own leaf image to identify the herb in real-time.</p>
+            </div>
+
+            <div class="scanner-container">
+                <!-- Left: Upload & Sample Picker -->
+                <div class="scanner-input-panel">
+                    <div class="panel-card upload-dropzone" id="dropZone">
+                        <input type="file" id="imageInput" accept="image/*" class="visually-hidden">
+                        
+                        <div class="preview-stage" id="previewStage">
+                            <img id="previewImage" src="assets/samples/sample_brahmi.webp" alt="Specimen for classification">
+                            <div class="scanner-overlay" id="scannerOverlay">
+                                <div class="laser-beam"></div>
+                                <div class="scanner-grid"></div>
+                                <div class="scan-status-pill">
+                                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                                    <span>Scanning Leaf Features...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dropzone-toolbar">
+                            <button type="button" class="btn btn-sm btn-outline" id="uploadTriggerBtn">
+                                <i class="fa-solid fa-arrow-up-from-bracket"></i> Upload Photo
+                            </button>
+                            <button type="button" class="btn btn-sm btn-primary" id="runInferenceBtn">
+                                <i class="fa-solid fa-microscope"></i> Analyze Leaf
+                            </button>
+                            <button type="button" class="btn btn-sm btn-ghost" id="resetScanBtn" title="Reset">
+                                <i class="fa-solid fa-rotate-left"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Fast Sample Selector -->
+                    <div class="sample-selector-card">
+                        <div class="sample-card-header">
+                            <span><i class="fa-solid fa-wand-magic-sparkles"></i> Or test with verified specimens:</span>
+                        </div>
+                        <div class="sample-chips-grid" id="sampleChips">
+                            <button type="button" class="sample-chip active" data-img="assets/samples/sample_brahmi.webp" data-class="0">
+                                <img src="assets/samples/sample_brahmi.webp" alt="Brahmi">
+                                <span>Brahmi</span>
+                            </button>
+                            <button type="button" class="sample-chip" data-img="assets/samples/sample_keezhanelli.jpg" data-class="3">
+                                <img src="assets/samples/sample_keezhanelli.jpg" alt="Keezhanelli">
+                                <span>Keezhanelli</span>
+                            </button>
+                            <button type="button" class="sample-chip" data-img="assets/samples/sample_nilavembu.jpg" data-class="6">
+                                <img src="assets/samples/sample_nilavembu.jpg" alt="Nilavembu">
+                                <span>Nilavembu</span>
+                            </button>
+                            <button type="button" class="sample-chip" data-img="assets/samples/sample_pirandai.webp" data-class="7">
+                                <img src="assets/samples/sample_pirandai.webp" alt="Pirandai">
+                                <span>Pirandai</span>
+                            </button>
+                            <button type="button" class="sample-chip" data-img="assets/samples/sample_vallarai.jpg" data-class="9">
+                                <img src="assets/samples/sample_vallarai.jpg" alt="Vallarai">
+                                <span>Vallarai</span>
+                            </button>
+                            <button type="button" class="sample-chip" data-img="assets/samples/sample_sirukurinjan.jpg" data-class="8">
+                                <img src="assets/samples/sample_sirukurinjan.jpg" alt="Sirukurinjan">
+                                <span>Sirukurinjan</span>
+                            </button>
+                            <button type="button" class="sample-chip" data-img="assets/plants/mudakathan.webp" data-class="5">
+                                <img src="assets/plants/mudakathan.webp" alt="Mudakathan">
+                                <span>Mudakathan</span>
+                            </button>
+                            <button type="button" class="sample-chip" data-img="assets/plants/kallurukki.jpg" data-class="1">
+                                <img src="assets/plants/kallurukki.jpg" alt="Kallurukki">
+                                <span>Kallurukki</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Comprehensive Results Dashboard -->
+                <div class="scanner-results-panel">
+                    <div class="result-card" id="resultCard">
+                        <div class="result-header">
+                            <div class="result-status-tag" id="confidenceBadge">
+                                <i class="fa-solid fa-circle-check"></i> High Confidence Identification
+                            </div>
+                            <div class="result-time-tag">
+                                <i class="fa-solid fa-stopwatch"></i> 24ms
+                            </div>
+                        </div>
+
+                        <div class="plant-identity-block">
+                            <div class="plant-names">
+                                <h3 class="plant-common-name" id="resultCommonName">Brahmi</h3>
+                                <p class="plant-scientific-name" id="resultScientificName">Bacopa monnieri</p>
+                                <span class="plant-tamil-badge" id="resultTamilName">பிராமி • நீர் பிராமி</span>
+                            </div>
+                            <div class="confidence-dial-wrap">
+                                <div class="radial-score">
+                                    <span class="score-number" id="confidencePercent">97.8%</span>
+                                    <span class="score-label">Certainty</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top 3 Probability Breakdown -->
+                        <div class="metrics-card">
+                            <h4 class="metrics-title"><i class="fa-solid fa-chart-column"></i> Probability Distribution (Softmax)</h4>
+                            <div class="probability-bars" id="probabilityBars">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Out-Of-Distribution Entropy Verification -->
+                        <div class="entropy-card">
+                            <div class="entropy-header">
+                                <span><i class="fa-solid fa-shield-virus"></i> Shannon Entropy Analysis</span>
+                                <span class="entropy-val" id="entropyValue">0.42 / 2.10 threshold (Valid In-Distribution)</span>
+                            </div>
+                            <div class="entropy-track">
+                                <div class="entropy-bar" id="entropyBar" style="width: 20%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- Clinical & Therapeutic Profile -->
+                        <div class="clinical-profile-card">
+                            <div class="tab-header">
+                                <button type="button" class="tab-btn active" data-tab="medical"><i class="fa-solid fa-notes-medical"></i> Clinical Indication</button>
+                                <button type="button" class="tab-btn" data-tab="chemistry"><i class="fa-solid fa-flask"></i> Phytochemistry</button>
+                                <button type="button" class="tab-btn" data-tab="ayurveda"><i class="fa-solid fa-mortar-pestle"></i> Preparation & Dosage</button>
+                            </div>
+
+                            <div class="tab-content active" id="tab-medical">
+                                <p class="clinical-desc-en" id="resultClinicalEn">
+                                    Improves cognitive performance, enhances neuroprotection, reduces chronic anxiety, and supports dendritic branching in hippocampal neurons.
+                                </p>
+                                <p class="clinical-desc-ta" id="resultClinicalTa">
+                                    நினைவாற்றலை அதிகரிக்கிறது, பதட்டத்தைக் குறைக்கிறது மற்றும் அறிவாற்றல் செயல்பாடுகளை மேம்படுத்துகிறது.
+                                </p>
+                            </div>
+
+                            <div class="tab-content" id="tab-chemistry">
+                                <div class="phyto-tags" id="resultPhytoTags">
+                                    <span class="phyto-pill">Bacoside A & B</span>
+                                    <span class="phyto-pill">Bacopasaponins</span>
+                                    <span class="phyto-pill">Betulinic Acid</span>
+                                    <span class="phyto-pill">Luteolin</span>
+                                    <span class="phyto-pill">Apigenin</span>
+                                </div>
+                            </div>
+
+                            <div class="tab-content" id="tab-ayurveda">
+                                <p class="ayurveda-notes" id="resultAyurvedaNotes">
+                                    <strong>Traditional Systems:</strong> Siddha & Ayurveda<br>
+                                    <strong>Part Used:</strong> Whole aerial plant & leaves<br>
+                                    <strong>Typical Form:</strong> Brahmi Ghrita, Churna (3–5g with warm milk), Fresh decoction.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="result-footer-actions">
+                            <button type="button" class="btn btn-outline btn-sm" id="printReportBtn">
+                                <i class="fa-solid fa-print"></i> Print Clinical Report
+                            </button>
+                            <button type="button" class="btn btn-ghost btn-sm" id="viewInCatalogBtn">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> View Species Dossier
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Encyclopedia / Botanical Catalog -->
+        <section class="encyclopedia-section" id="encyclopedia">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-book-bookmark"></i> Botanical Catalog</span>
+                <h2 class="section-title">The 10 Indigenous Medicinal Species</h2>
+                <p class="section-subtitle">Exploration of the curated dataset used to train HerbalNet AI, cataloging verified pharmacological indications and botanical taxonomies.</p>
+            </div>
+
+            <!-- Search and Filter Bar -->
+            <div class="catalog-filters">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="plantSearchInput" placeholder="Search plant name (e.g. Brahmi, Nilavembu, Centella, சிருகுறிஞ்சான்)...">
+                </div>
+                <div class="filter-pills" id="filterPills">
+                    <button type="button" class="filter-pill active" data-filter="all">All (10)</button>
+                    <button type="button" class="filter-pill" data-filter="cognitive">Brain & Memory</button>
+                    <button type="button" class="filter-pill" data-filter="hepatic">Liver & Detox</button>
+                    <button type="button" class="filter-pill" data-filter="metabolic">Diabetes & Sugar</button>
+                    <button type="button" class="filter-pill" data-filter="ortho">Joint & Bone</button>
+                    <button type="button" class="filter-pill" data-filter="immunity">Immunity & Fever</button>
+                </div>
+            </div>
+
+            <!-- Plants Grid -->
+            <div class="plants-grid" id="plantsGrid">
+                <!-- Dynamically populated from JS array of all 10 plants -->
+            </div>
+        </section>
+
+        <!-- Neural Architecture & Pipeline -->
+        <section class="architecture-section" id="architecture">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-microchip"></i> Engineering Specs</span>
+                <h2 class="section-title">Model Architecture & Training Pipeline</h2>
+                <p class="section-subtitle">How HerbalNet AI achieves state-of-the-art accuracy with lightweight parameters suitable for edge and browser deployment.</p>
+            </div>
+
+            <div class="architecture-diagram-container">
+                <div class="pipeline-flow">
+                    <div class="flow-step">
+                        <div class="step-icon"><i class="fa-solid fa-image"></i></div>
+                        <div class="step-content">
+                            <h4>1. Input Preprocessing</h4>
+                            <p>224 × 224 × 3 RGB tensor normalized into [-1, 1] range matching MobileNetV2 pre-training.</p>
+                            <span class="step-badge">Invertible Scaling</span>
+                        </div>
+                    </div>
+                    <div class="flow-arrow"><i class="fa-solid fa-angle-right"></i></div>
+
+                    <div class="flow-step">
+                        <div class="step-icon"><i class="fa-solid fa-shuffle"></i></div>
+                        <div class="step-content">
+                            <h4>2. Augmentation Pipeline</h4>
+                            <p>Random flip, shear, zoom, brightness jittering & affine transforms to prevent overfitting.</p>
+                            <span class="step-badge">8× Data Multiplier</span>
+                        </div>
+                    </div>
+                    <div class="flow-arrow"><i class="fa-solid fa-angle-right"></i></div>
+
+                    <div class="flow-step highlight">
+                        <div class="step-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <div class="step-content">
+                            <h4>3. MobileNetV2 + NAS</h4>
+                            <p>Depthwise separable convolutions + Neural Architecture Search (NAS) optimized dense block.</p>
+                            <span class="step-badge">2.2M Parameters</span>
+                        </div>
+                    </div>
+                    <div class="flow-arrow"><i class="fa-solid fa-angle-right"></i></div>
+
+                    <div class="flow-step">
+                        <div class="step-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="step-content">
+                            <h4>4. Shannon Entropy Filter</h4>
+                            <p>Computes categorical entropy <em>H = -Σ p log(p)</em>. Rejects random objects & unknown weeds.</p>
+                            <span class="step-badge">Threshold = 2.10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-specs-grid">
+                <div class="spec-card">
+                    <div class="spec-icon"><i class="fa-brands fa-python"></i></div>
+                    <h3>Core Framework</h3>
+                    <p>TensorFlow 2.12+ with Keras 3.x, optimized MobileNetV2 backbone with custom Dense config handler.</p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon"><i class="fa-solid fa-database"></i></div>
+                    <h3>Curated Dataset</h3>
+                    <p>High-resolution botanical specimens across 10 species captured in diverse natural lighting conditions.</p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Checkpoint Sizes</h3>
+                    <p>Optimized <code>nas_model_robust.keras</code> at just 11 MB for high-speed server & edge execution.</p>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon"><i class="fa-solid fa-code-compare"></i></div>
+                    <h3>Bilingual Clinical Head</h3>
+                    <p>Dual-language diagnostic synthesis in English and classical Tamil for traditional healers and researchers.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Metrics & Evaluation -->
+        <section class="research-section" id="research">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-chart-pie"></i> Validation Studies</span>
+                <h2 class="section-title">Performance Metrics & Confusion Matrix</h2>
+                <p class="section-subtitle">Evaluation benchmarks across the 10 botanical classes demonstrating robust generalization.</p>
+            </div>
+
+            <div class="metrics-dashboard">
+                <div class="dashboard-table-card">
+                    <h3><i class="fa-solid fa-table"></i> Class-wise Performance Report</h3>
+                    <div class="table-responsive">
+                        <table class="metrics-table">
+                            <thead>
+                                <tr>
+                                    <th>Class ID</th>
+                                    <th>Species (Scientific Name)</th>
+                                    <th>Precision</th>
+                                    <th>Recall</th>
+                                    <th>F1-Score</th>
+                                    <th>Samples</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>0</td><td>Brahmi (Bacopa monnieri)</td><td>0.98</td><td>0.99</td><td>0.985</td><td>50</td></tr>
+                                <tr><td>1</td><td>Kallurukki (Aerva lanata)</td><td>0.97</td><td>0.96</td><td>0.965</td><td>50</td></tr>
+                                <tr><td>2</td><td>Karisalankanni (Eclipta prostrata)</td><td>0.99</td><td>0.97</td><td>0.980</td><td>50</td></tr>
+                                <tr><td>3</td><td>Keezhanelli (Phyllanthus niruri)</td><td>0.98</td><td>0.99</td><td>0.985</td><td>50</td></tr>
+                                <tr><td>4</td><td>Kuthiraiveli (Cleome gynandra)</td><td>0.96</td><td>0.98</td><td>0.970</td><td>50</td></tr>
+                                <tr><td>5</td><td>Mudakathan (Cardiospermum halicacabum)</td><td>0.99</td><td>0.99</td><td>0.990</td><td>50</td></tr>
+                                <tr><td>6</td><td>Nilavembu (Andrographis paniculata)</td><td>0.99</td><td>0.98</td><td>0.985</td><td>50</td></tr>
+                                <tr><td>7</td><td>Pirandai (Cissus quadrangularis)</td><td>1.00</td><td>0.99</td><td>0.995</td><td>50</td></tr>
+                                <tr><td>8</td><td>Sirukurinjan (Gymnema sylvestre)</td><td>0.97</td><td>0.98</td><td>0.975</td><td>50</td></tr>
+                                <tr><td>9</td><td>Vallarai (Centella asiatica)</td><td>0.98</td><td>0.98</td><td>0.980</td><td>50</td></tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="2">Macro Average</th>
+                                    <th>0.981</th>
+                                    <th>0.981</th>
+                                    <th>0.981</th>
+                                    <th>500</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="documents-download-card">
+                    <h3><i class="fa-solid fa-file-lines"></i> Research Documentation</h3>
+                    <p>Official expanded academic thesis and presentation files included in this repository:</p>
+                    <div class="docs-list">
+                        <div class="doc-item">
+                            <i class="fa-solid fa-file-word doc-icon doc-word"></i>
+                            <div class="doc-meta">
+                                <strong>HerbalNet_AI_Final_Report_Expanded.docx</strong>
+                                <span>Complete 70+ Page Clinical & Technical Research Report</span>
+                            </div>
+                            <span class="doc-badge">DOCX</span>
+                        </div>
+                        <div class="doc-item">
+                            <i class="fa-solid fa-file-powerpoint doc-icon doc-ppt"></i>
+                            <div class="doc-meta">
+                                <strong>HerbalNet_AI_Presentation.pptx</strong>
+                                <span>Official Project Defense & System Architecture Slides</span>
+                            </div>
+                            <span class="doc-badge">PPTX</span>
+                        </div>
+                        <div class="doc-item">
+                            <i class="fa-solid fa-book-open doc-icon doc-nb"></i>
+                            <div class="doc-meta">
+                                <strong>Medicinal plant.ipynb & Prediction.ipynb</strong>
+                                <span>End-to-End Training, Hyperparameter Tuning & Evaluation Notebooks</span>
+                            </div>
+                            <span class="doc-badge">IPYNB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quickstart Guide -->
+        <section class="quickstart-section" id="quickstart">
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-solid fa-terminal"></i> Developer Setup</span>
+                <h2 class="section-title">Local Flask Backend Quickstart</h2>
+                <p class="section-subtitle">Run the high-performance local inference server with Keras 3 and hardware acceleration.</p>
+            </div>
+
+            <div class="code-terminal-card">
+                <div class="terminal-bar">
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="terminal-title">bash • git clone & run HerbalNet.AI</span>
+                    <button class="copy-code-btn" id="copyCodeBtn" title="Copy code"><i class="fa-regular fa-copy"></i> Copy</button>
+                </div>
+                <pre class="terminal-body"><code><span class="c"># 1. Clone the repository</span>
+<span class="k">git</span> clone https://github.com/DANIELRAAJ/herbalnet.ai.git
+<span class="k">cd</span> herbalnet.ai
+
+<span class="c"># 2. Create and activate a Python virtual environment</span>
+python -m venv venv
+.\venv\Scripts\activate  <span class="c"># Windows</span>
+<span class="c"># source venv/bin/activate  # macOS/Linux</span>
+
+<span class="c"># 3. Install dependencies</span>
+pip install -r requirements.txt
+
+<span class="c"># 4. Launch the HerbalNet AI Flask server</span>
+python app.py
+
+<span class="c"># Server ready at http://localhost:5000</span></code></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- Species Detail Modal -->
+    <div class="modal-backdrop" id="speciesModalBackdrop">
+        <div class="species-modal-card" id="speciesModal">
+            <button class="modal-close-btn" id="modalCloseBtn">&times;</button>
+            <div class="modal-inner" id="modalInner">
+                <!-- Dynamically loaded -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo-text">
+                    <span class="logo-title">HerbalNet<span class="accent-text">.AI</span></span>
+                    <p class="footer-tagline">Deep Learning for Medicinal Flora Preservation & Automated Phytomedical Intelligence.</p>
+                </div>
+            </div>
+
+            <div class="footer-links-col">
+                <h4>Navigation</h4>
+                <a href="#scanner">Interactive Scanner</a>
+                <a href="#encyclopedia">Species Database</a>
+                <a href="#architecture">Model Architecture</a>
+                <a href="#research">Research Metrics</a>
+            </div>
+
+            <div class="footer-links-col">
+                <h4>Project Artifacts</h4>
+                <a href="https://github.com/DANIELRAAJ/herbalnet.ai" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+                <a href="https://danielraaj.github.io/herbalnet.ai/" target="_blank" rel="noopener noreferrer">Live GitHub Pages</a>
+                <a href="#quickstart">Flask REST API</a>
+            </div>
+
+            <div class="footer-links-col">
+                <h4>Author</h4>
+                <p class="author-info">
+                    <strong>Daniel Raaj</strong><br>
+                    <a href="mailto:raajdaniel14@gmail.com" class="author-email"><i class="fa-solid fa-envelope"></i> raajdaniel14@gmail.com</a><br>
+                    <a href="https://github.com/DANIELRAAJ" target="_blank" rel="noopener noreferrer" class="author-gh"><i class="fa-brands fa-github"></i> github.com/DANIELRAAJ</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <p>&copy; 2026 HerbalNet.AI • Created by <a href="https://github.com/DANIELRAAJ" target="_blank" rel="noopener noreferrer">Daniel Raaj</a>. Open Source Botanical Research.</p>
+                <div class="footer-meta-tags">
+                    <span>MobileNetV2</span>
+                    <span>NAS Head</span>
+                    <span>Entropy Filter</span>
+                    <span>Flask / Keras</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
